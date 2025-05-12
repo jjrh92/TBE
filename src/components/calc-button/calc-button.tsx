@@ -3,7 +3,6 @@ import { Component, Host, h, Prop } from '@stencil/core';
 @Component({
   tag: 'calc-button',
   styleUrl: 'calc-button.scss',
-  shadow: true,
 })
 export class CalcButton {
 
