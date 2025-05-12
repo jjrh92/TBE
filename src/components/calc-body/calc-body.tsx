@@ -3,14 +3,12 @@ import { Component, h } from '@stencil/core';
 @Component({
   tag: 'calc-body',
   styleUrl: 'calc-body.scss',
-  shadow: true,
 })
 export class CalcBody {
   render() {
     return (
-
-      <div class="calc-body">
-        <input type="text" class="value" readOnly />
+      <div draggable={false} class="calc-body">
+        <input draggable={false} type="text" class="value" readOnly />
         <calc-button data="C" erase />
         <calc-button data="CE" />
         <calc-button data="/" />
@@ -33,4 +31,4 @@ export class CalcBody {
       </div>
     );
   }
-}
+};
