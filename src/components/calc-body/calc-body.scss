@@ -1,0 +1,25 @@
+.calc-body {
+  background-color: #333;
+  padding: 40px;
+  padding-right: 20px;
+  border-radius: 20px;
+  min-width: 300px;
+  min-height: 400px;
+  display: grid;
+  gap: 10px;
+  box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25), 10px 10px 70px rgba(0, 0, 0, 0.25), inset -5px -5px 15px rgba(0, 0, 0, 0.25), inset 5px 5px 15px rgba(0, 0, 0, 0.25);
+
+  input {
+    grid-column: span 4;
+    height: 100px;
+    width: 90%;
+    background-color: #009de0;
+    margin-bottom: 10px;
+    border-radius: 13px;
+    border: none;
+    outline: none;
+    cursor: default;
+    font-size: 36px;
+    padding: 10px;
+  }
+}

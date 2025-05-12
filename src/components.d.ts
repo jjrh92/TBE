@@ -6,6 +6,17 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface CalcBody {
+    }
+    interface CalcButton {
+        "data": string;
+        "equal"?: boolean;
+        "erase"?: boolean;
+    }
+    interface CalcContainer {
+    }
+    interface CalculadoraJulio {
+    }
     interface MyComponent {
         /**
           * The first name
@@ -22,6 +33,30 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLCalcBodyElement extends Components.CalcBody, HTMLStencilElement {
+    }
+    var HTMLCalcBodyElement: {
+        prototype: HTMLCalcBodyElement;
+        new (): HTMLCalcBodyElement;
+    };
+    interface HTMLCalcButtonElement extends Components.CalcButton, HTMLStencilElement {
+    }
+    var HTMLCalcButtonElement: {
+        prototype: HTMLCalcButtonElement;
+        new (): HTMLCalcButtonElement;
+    };
+    interface HTMLCalcContainerElement extends Components.CalcContainer, HTMLStencilElement {
+    }
+    var HTMLCalcContainerElement: {
+        prototype: HTMLCalcContainerElement;
+        new (): HTMLCalcContainerElement;
+    };
+    interface HTMLCalculadoraJulioElement extends Components.CalculadoraJulio, HTMLStencilElement {
+    }
+    var HTMLCalculadoraJulioElement: {
+        prototype: HTMLCalculadoraJulioElement;
+        new (): HTMLCalculadoraJulioElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -29,10 +64,25 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "calc-body": HTMLCalcBodyElement;
+        "calc-button": HTMLCalcButtonElement;
+        "calc-container": HTMLCalcContainerElement;
+        "calculadora-julio": HTMLCalculadoraJulioElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface CalcBody {
+    }
+    interface CalcButton {
+        "data"?: string;
+        "equal"?: boolean;
+        "erase"?: boolean;
+    }
+    interface CalcContainer {
+    }
+    interface CalculadoraJulio {
+    }
     interface MyComponent {
         /**
           * The first name
@@ -48,6 +98,10 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface IntrinsicElements {
+        "calc-body": CalcBody;
+        "calc-button": CalcButton;
+        "calc-container": CalcContainer;
+        "calculadora-julio": CalculadoraJulio;
         "my-component": MyComponent;
     }
 }
@@ -55,6 +109,10 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "calc-body": LocalJSX.CalcBody & JSXBase.HTMLAttributes<HTMLCalcBodyElement>;
+            "calc-button": LocalJSX.CalcButton & JSXBase.HTMLAttributes<HTMLCalcButtonElement>;
+            "calc-container": LocalJSX.CalcContainer & JSXBase.HTMLAttributes<HTMLCalcContainerElement>;
+            "calculadora-julio": LocalJSX.CalculadoraJulio & JSXBase.HTMLAttributes<HTMLCalculadoraJulioElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
