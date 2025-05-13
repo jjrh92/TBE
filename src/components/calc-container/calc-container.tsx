@@ -16,6 +16,7 @@ export class CalcContainer {
         <div class="calc-container">
           <calc-body onHistoryChanged={(event) => this.handleHistoryChanged(event)} />
           {this.history.length > 0 && <calc-log history={this.history} />}
+          {this.history.length > 0 && <button class="reload" title='Reload/Reniciar' onClick={() => {window.location.reload()}}>🔄</button>}
         </div>
       </Host>
     );
