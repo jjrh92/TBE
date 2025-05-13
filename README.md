@@ -52,10 +52,8 @@ Clone the repo and execute npm install from your vscode / Clona el repositorio e
 
    ```sh
    git clone https://github.com/jjrh92/TBE.git
-   npm install
-   npm start
    ```
-
+   npm install & npm start
 
    Or check the live view from the link below / O visita la pagina del proyecto desplegado en vivo.
 
@@ -115,7 +113,6 @@ Contact <img src="https://media3.giphy.com/media/dA9zmG7BCtbauczAQY/giphy.gif" w
 Acknowledgments <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXliemQ4NzVmdXRxc3FyM3RjN2F2NzQ5MmRwZnJxa2VrZDBncjhtbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/sa5tk2gi3G1MSmy1vY/giphy.gif" width="30px"> Agradecimientos
 </h1>
 
+[Stencil JS](https://stenciljs.com/)
 
 [iconos8.es](https://iconos8.es/)
-
-[Stencil JS](https://stenciljs.com/)
