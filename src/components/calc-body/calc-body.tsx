@@ -18,13 +18,28 @@ export class CalcBody {
       const result = new Function('return ' + sanitizedExpression)();
 
       if (typeof result === 'number' && !isNaN(result)) {
-        return result.toString();
+        const resultStr = result.toString();
+        this.saveOperation(expression, resultStr); // Save only valid result
+        return resultStr;
       } else {
         return 'Syntax error 😱';
       }
     } catch {
       return 'Syntax error 😱';
     }
+  }
+
+  saveOperation(operation: string, result: string) {
+    const historyKey = 'Log';
+    const stored = localStorage.getItem(historyKey);
+    const history = stored ? JSON.parse(stored) : [];
+
+    if (history.length >= 30) {
+      history.shift();
+    }
+
+    history.push({ operation, result });
+    localStorage.setItem(historyKey, JSON.stringify(history));
   }
 
   handleClickedButton(value: string) {
