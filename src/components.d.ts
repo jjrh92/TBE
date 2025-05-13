@@ -15,6 +15,8 @@ export namespace Components {
     }
     interface CalcContainer {
     }
+    interface CalcLog {
+    }
     interface CalculadoraJulio {
     }
 }
@@ -37,6 +39,12 @@ declare global {
         prototype: HTMLCalcContainerElement;
         new (): HTMLCalcContainerElement;
     };
+    interface HTMLCalcLogElement extends Components.CalcLog, HTMLStencilElement {
+    }
+    var HTMLCalcLogElement: {
+        prototype: HTMLCalcLogElement;
+        new (): HTMLCalcLogElement;
+    };
     interface HTMLCalculadoraJulioElement extends Components.CalculadoraJulio, HTMLStencilElement {
     }
     var HTMLCalculadoraJulioElement: {
@@ -47,6 +55,7 @@ declare global {
         "calc-body": HTMLCalcBodyElement;
         "calc-button": HTMLCalcButtonElement;
         "calc-container": HTMLCalcContainerElement;
+        "calc-log": HTMLCalcLogElement;
         "calculadora-julio": HTMLCalculadoraJulioElement;
     }
 }
@@ -60,12 +69,15 @@ declare namespace LocalJSX {
     }
     interface CalcContainer {
     }
+    interface CalcLog {
+    }
     interface CalculadoraJulio {
     }
     interface IntrinsicElements {
         "calc-body": CalcBody;
         "calc-button": CalcButton;
         "calc-container": CalcContainer;
+        "calc-log": CalcLog;
         "calculadora-julio": CalculadoraJulio;
     }
 }
@@ -76,6 +88,7 @@ declare module "@stencil/core" {
             "calc-body": LocalJSX.CalcBody & JSXBase.HTMLAttributes<HTMLCalcBodyElement>;
             "calc-button": LocalJSX.CalcButton & JSXBase.HTMLAttributes<HTMLCalcButtonElement>;
             "calc-container": LocalJSX.CalcContainer & JSXBase.HTMLAttributes<HTMLCalcContainerElement>;
+            "calc-log": LocalJSX.CalcLog & JSXBase.HTMLAttributes<HTMLCalcLogElement>;
             "calculadora-julio": LocalJSX.CalculadoraJulio & JSXBase.HTMLAttributes<HTMLCalculadoraJulioElement>;
         }
     }

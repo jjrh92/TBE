@@ -5,7 +5,7 @@ import { Component, h, State } from '@stencil/core';
   styleUrl: 'calc-body.scss',
 })
 export class CalcBody {
-  @State() inputValue: string = "0";
+  @State() inputValue: string = "";
 
   evaluateExpression(expression: string): string {
     try {
@@ -68,13 +68,13 @@ export class CalcBody {
         <calc-button data="CE" onClick={() => this.handleClickedButton('CE')} />
         <calc-button data="/" onClick={() => this.handleClickedButton('/')} />
         <calc-button data="*" onClick={() => this.handleClickedButton('*')} />
-        <calc-button data="9" onClick={() => this.handleClickedButton('9')} />
-        <calc-button data="8" onClick={() => this.handleClickedButton('8')} />
         <calc-button data="7" onClick={() => this.handleClickedButton('7')} />
+        <calc-button data="8" onClick={() => this.handleClickedButton('8')} />
+        <calc-button data="9" onClick={() => this.handleClickedButton('9')} />
         <calc-button data="-" onClick={() => this.handleClickedButton('-')} />
-        <calc-button data="6" onClick={() => this.handleClickedButton('6')} />
-        <calc-button data="5" onClick={() => this.handleClickedButton('5')} />
         <calc-button data="4" onClick={() => this.handleClickedButton('4')} />
+        <calc-button data="5" onClick={() => this.handleClickedButton('5')} />
+        <calc-button data="6" onClick={() => this.handleClickedButton('6')} />
         <calc-button data="+" onClick={() => this.handleClickedButton('+')} />
         <calc-button data="1" onClick={() => this.handleClickedButton('1')} />
         <calc-button data="2" onClick={() => this.handleClickedButton('2')} />
