@@ -15,7 +15,7 @@ export class CalcContainer {
       <Host>
         <div class="calc-container">
           <calc-body onHistoryChanged={(event) => this.handleHistoryChanged(event)} />
-          <calc-log history={this.history} />
+          {this.history.length > 0 && <calc-log history={this.history} />}
         </div>
       </Host>
     );

@@ -15,7 +15,7 @@ export class CalcLog {
           <div class="scroll_wrapper">
             <span class="container_text">
               {this.history.map(entry => (
-              <>{entry}</>
+              <span title={entry}>{entry}, </span>
             ))}</span>
           </div>
           <span class="container_title_text">Logger</span>
