@@ -1,4 +1,4 @@
-import { Component, h, State } from '@stencil/core';
+import { Component, h, State, Event, EventEmitter } from '@stencil/core';
 
 @Component({
   tag: 'calc-body',
@@ -6,6 +6,8 @@ import { Component, h, State } from '@stencil/core';
 })
 export class CalcBody {
   @State() inputValue: string = "";
+  @State() history: string[] = [];
+  @Event() historyChanged: EventEmitter<string[]>;
 
   evaluateExpression(expression: string): string {
     try {
@@ -14,12 +16,12 @@ export class CalcBody {
         .replace(/(\.\.)+/g, '.');
 
       if (sanitizedExpression === '') return '0';
-
       const result = new Function('return ' + sanitizedExpression)();
 
       if (typeof result === 'number' && !isNaN(result)) {
         const resultStr = result.toString();
-        this.saveOperation(expression, resultStr); // Save only valid result
+        this.history = [...this.history, `${expression} = ${resultStr}`];
+        this.historyChanged.emit(this.history);
         return resultStr;
       } else {
         return 'Syntax error 😱';
@@ -27,19 +29,6 @@ export class CalcBody {
     } catch {
       return 'Syntax error 😱';
     }
-  }
-
-  saveOperation(operation: string, result: string) {
-    const historyKey = 'Log';
-    const stored = localStorage.getItem(historyKey);
-    const history = stored ? JSON.parse(stored) : [];
-
-    if (history.length >= 30) {
-      history.shift();
-    }
-
-    history.push({ operation, result });
-    localStorage.setItem(historyKey, JSON.stringify(history));
   }
 
   handleClickedButton(value: string) {
@@ -57,13 +46,7 @@ export class CalcBody {
   render() {
     return (
       <div draggable={false} class="calc-body">
-        <input
-          draggable={false}
-          type="text"
-          class="value"
-          value={this.inputValue}
-          readOnly
-        />
+        <input draggable={false} type="text" class="value" value={this.inputValue} readOnly />
         <calc-button data="C" onClick={() => this.handleClickedButton('C')} erase />
         <calc-button data="CE" onClick={() => this.handleClickedButton('CE')} />
         <calc-button data="/" onClick={() => this.handleClickedButton('/')} />

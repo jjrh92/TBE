@@ -16,12 +16,28 @@ export namespace Components {
     interface CalcContainer {
     }
     interface CalcLog {
+        "history": string[];
     }
     interface CalculadoraJulio {
     }
 }
+export interface CalcBodyCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCalcBodyElement;
+}
 declare global {
+    interface HTMLCalcBodyElementEventMap {
+        "historyChanged": string[];
+    }
     interface HTMLCalcBodyElement extends Components.CalcBody, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCalcBodyElementEventMap>(type: K, listener: (this: HTMLCalcBodyElement, ev: CalcBodyCustomEvent<HTMLCalcBodyElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCalcBodyElementEventMap>(type: K, listener: (this: HTMLCalcBodyElement, ev: CalcBodyCustomEvent<HTMLCalcBodyElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLCalcBodyElement: {
         prototype: HTMLCalcBodyElement;
@@ -61,6 +77,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface CalcBody {
+        "onHistoryChanged"?: (event: CalcBodyCustomEvent<string[]>) => void;
     }
     interface CalcButton {
         "data"?: string;
@@ -70,6 +87,7 @@ declare namespace LocalJSX {
     interface CalcContainer {
     }
     interface CalcLog {
+        "history"?: string[];
     }
     interface CalculadoraJulio {
     }
