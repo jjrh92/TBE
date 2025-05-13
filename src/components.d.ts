@@ -17,20 +17,6 @@ export namespace Components {
     }
     interface CalculadoraJulio {
     }
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
-    }
 }
 declare global {
     interface HTMLCalcBodyElement extends Components.CalcBody, HTMLStencilElement {
@@ -57,18 +43,11 @@ declare global {
         prototype: HTMLCalculadoraJulioElement;
         new (): HTMLCalculadoraJulioElement;
     };
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
-    }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
-    };
     interface HTMLElementTagNameMap {
         "calc-body": HTMLCalcBodyElement;
         "calc-button": HTMLCalcButtonElement;
         "calc-container": HTMLCalcContainerElement;
         "calculadora-julio": HTMLCalculadoraJulioElement;
-        "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
@@ -83,26 +62,11 @@ declare namespace LocalJSX {
     }
     interface CalculadoraJulio {
     }
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
-    }
     interface IntrinsicElements {
         "calc-body": CalcBody;
         "calc-button": CalcButton;
         "calc-container": CalcContainer;
         "calculadora-julio": CalculadoraJulio;
-        "my-component": MyComponent;
     }
 }
 export { LocalJSX as JSX };
@@ -113,7 +77,6 @@ declare module "@stencil/core" {
             "calc-button": LocalJSX.CalcButton & JSXBase.HTMLAttributes<HTMLCalcButtonElement>;
             "calc-container": LocalJSX.CalcContainer & JSXBase.HTMLAttributes<HTMLCalcContainerElement>;
             "calculadora-julio": LocalJSX.CalculadoraJulio & JSXBase.HTMLAttributes<HTMLCalculadoraJulioElement>;
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
 }
