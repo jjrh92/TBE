@@ -1,12 +1,5 @@
-@font-face {
-  font-family: 'Digital-7';
-  src: url('../../assets/digital-7.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 .container {
-  margin: 60px 0px 60px 0px;
+  margin: 60px 0px;
   width: 300px;
   height: 100px;
   display: flex;
@@ -17,17 +10,45 @@
   border-radius: 10px;
 
   .container_title {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .container_title_text {
     font-size: 20px;
     font-weight: bold;
     color: white;
     font-family: 'Digital-7', sans-serif;
     user-select: none;
+    transform: rotate(180deg);
+    writing-mode: vertical-lr;
+    margin: 0px 4px;
+    flex-shrink: 0;
+  }
+
+  .scroll_wrapper {
+    flex: 1;
+    overflow: auto;
+    white-space: nowrap;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scrollbar-width: thin;
+    scrollbar-color: white transparent;
+
   }
 
   .container_text {
-    font-size: 16px;
+    font-size: 18px;
     color: white;
     font-family: 'Digital-7', sans-serif;
     user-select: none;
+    white-space: nowrap;
+    overflow-wrap: break-word;
+    max-width: 100%;
   }
 }

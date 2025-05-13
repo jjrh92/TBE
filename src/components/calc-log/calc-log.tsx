@@ -10,9 +10,15 @@ export class CalcLog {
     return (
 
       <div class="container">
-        <span class="container_title">History/Log</span>
-        <span class="container_text">DATA</span>
+        <div class="container_title">
+          <span class="container_title_text">History</span>
+          <div class="scroll_wrapper">
+            <span class="container_text">DATA</span>
+          </div>
+          <span class="container_title_text">Logger</span>
+        </div>
       </div>
+
 
     );
   }
