@@ -1,22 +1,36 @@
-.calc-container {
+$font-family-default: Arial, Helvetica, sans-serif;
+$font-size-large: 44px;
+$spacing-medium: 10px;
+$border-radius-full: 50%;
+$button-background: none;
+$button-shadow: none;
+$cursor-pointer: pointer;
+
+@mixin center-flex {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+}
+
+@mixin button-reset {
+  border: none;
+  background: $button-background;
+  box-shadow: $button-shadow;
+  padding: 0;
+  cursor: $cursor-pointer;
+}
+
+.calc-container {
+  @include center-flex;
+  flex-direction: column;
   min-height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: $font-family-default;
 
   .reload {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    border-radius: 50%;
-    padding: 0;
-    font-size: 44px;
-    cursor: pointer;
-    background: none;
-    box-shadow: none;
+    margin-top: $spacing-medium;
+    @include center-flex;
+    @include button-reset;
+    border-radius: $border-radius-full;
+    font-size: $font-size-large;
   }
 }

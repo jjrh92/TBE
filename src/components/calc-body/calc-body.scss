@@ -1,3 +1,19 @@
+$font-digital: 'Digital-7', sans-serif;
+$font-size-display: 36px;
+$color-background: #333;
+$color-input-bg: #009de0;
+$padding-large: 30px;
+$padding-input: 10px;
+$gap: 10px;
+$border-radius-body: 20px;
+$border-radius-input: 13px;
+
+$box-shadow-body: 
+  25px 25px 75px rgba(0, 0, 0, 0.25),
+  10px 10px 70px rgba(0, 0, 0, 0.25),
+  inset -5px -5px 15px rgba(0, 0, 0, 0.25),
+  inset 5px 5px 15px rgba(0, 0, 0, 0.25);
+
 @font-face {
   font-family: 'Digital-7';
   src: url('../../assets/digital-7.ttf') format('truetype');
@@ -5,28 +21,36 @@
   font-style: normal;
 }
 
+@mixin box-shadow-default {
+  box-shadow: $box-shadow-body;
+}
+
+@mixin input-style {
+  background-color: $color-input-bg;
+  border: none;
+  outline: none;
+  cursor: default;
+  font-size: $font-size-display;
+  padding: $padding-input;
+  text-align: right;
+  font-family: $font-digital;
+  border-radius: $border-radius-input;
+}
+
 .calc-body {
-  background-color: #333;
-  padding: 30px;
-  border-radius: 20px;
+  background-color: $color-background;
+  padding: $padding-large;
+  border-radius: $border-radius-body;
   min-width: 300px;
   min-height: 400px;
   display: grid;
-  gap: 10px;
-  box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25), 10px 10px 70px rgba(0, 0, 0, 0.25), inset -5px -5px 15px rgba(0, 0, 0, 0.25), inset 5px 5px 15px rgba(0, 0, 0, 0.25);
+  gap: $gap;
+  @include box-shadow-default;
 
   input {
     grid-column: span 4;
     height: 100px;
-    background-color: #009de0;
-    margin-bottom: 10px;
-    border-radius: 13px;
-    border: none;
-    outline: none;
-    cursor: default;
-    font-size: 36px;
-    padding: 10px;
-    text-align: right;
-    font-family: "Digital-7", sans-serif;
+    margin-bottom: $gap;
+    @include input-style;
   }
 }

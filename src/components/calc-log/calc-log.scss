@@ -1,13 +1,33 @@
+$primary-color: #009de0;
+$text-color: white;
+$font-family: 'Digital-7', sans-serif;
+$font-size-title: 20px;
+$font-size-text: 18px;
+$border-radius: 10px;
+$spacing-small: 4px;
+$spacing-medium: 10px;
+$scrollbar-color: white;
+$scrollbar-thin: thin;
+
+@mixin text-styles($font-size, $font-weight: normal, $transform: none) {
+  font-family: $font-family;
+  font-size: $font-size;
+  color: $text-color;
+  font-weight: $font-weight;
+  user-select: none;
+  transform: $transform;
+}
+
 .container {
-  margin: 10px 0px;
+  margin: $spacing-medium 0;
   width: 300px;
   height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: #009de0;
-  border-radius: 10px;
+  background-color: $primary-color;
+  border-radius: $border-radius;
 
   .container_title {
     display: flex;
@@ -18,14 +38,10 @@
   }
 
   .container_title_text {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    font-family: 'Digital-7', sans-serif;
-    user-select: none;
+    @include text-styles($font-size-title, bold);
     transform: rotate(180deg);
     writing-mode: vertical-lr;
-    margin: 0px 4px;
+    margin: 0 $spacing-small;
     flex-shrink: 0;
   }
 
@@ -37,18 +53,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    scrollbar-width: thin;
-    scrollbar-color: white transparent;
+    scrollbar-width: $scrollbar-thin;
+    scrollbar-color: $scrollbar-color transparent;
   }
 
   .container_text {
-    font-size: 18px;
-    color: white;
-    font-family: 'Digital-7', sans-serif;
-    user-select: none;
+    @include text-styles($font-size-text);
     white-space: nowrap;
     overflow-wrap: break-word;
     max-width: 100%;
   }
-
 }

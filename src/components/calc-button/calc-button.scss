@@ -1,129 +1,80 @@
-.num {
-  grid-row: span 2;
+$font-digital: 'Digital-7', sans-serif;
+$font-size-icon: 1.5em;
+$border-radius-default: 10px;
+$box-shadow-default: inset -8px 0 8px rgba(0, 0, 0, 0.15), inset 0 -8px 8px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(0, 0, 0, 0.75), 10px 20px 25px rgba(0, 0, 0, 0.4);
+$color-num-bg: linear-gradient(180deg, #2f2f2f, #3f3f3f);
+$color-equal-bg: #009de0;
+$color-erase-bg: red;
+$color-active-filter: brightness(1.7);
+$color-equal-before-bg: linear-gradient(90deg, #1479c9, rgba(255, 255, 255, 0.36));
+$color-erase-before-bg: linear-gradient(90deg, #d20000, rgba(255, 255, 255, 0.36));
+
+@mixin button-base($bg-color, $box-shadow, $border-color: transparent) {
+  display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   border: none;
   width: 80px;
   height: 80px;
-  background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
+  background: $bg-color;
   color: white;
-  border-radius: 10px;
-  box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15), inset 0 -8px 8px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(0, 0, 0, 0.75), 10px 20px 25px rgba(0, 0, 0, 0.4);
+  border-radius: $border-radius-default;
+  box-shadow: $box-shadow;
   position: relative;
   user-select: none;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    right: 12px;
+    bottom: 14px;
+    border-radius: $border-radius-default;
+    background: $border-color;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1), 10px 5px 10px rgba(0, 0, 0, 0.15);
+    border-left: 1px solid rgba(0, 0, 0, 0.27);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.27);
+    border-top: 1px solid rgba(0, 0, 0, 0.6);
+  }
 
   i {
     font-weight: bold;
     position: relative;
     text-transform: uppercase;
     font-style: normal;
-    font-size: 1.5em;
+    font-size: $font-size-icon;
+  }
+
+  &:active {
+    filter: $color-active-filter;
   }
 }
 
-.num:active {
-  filter: brightness(1.7);
-}
+.num {
+  grid-row: span 2;
+  @include button-base($color-num-bg, $box-shadow-default);
 
-.num::before {
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 4px;
-  right: 12px;
-  bottom: 14px;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #2d2d2d, #4d4d4d);
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1), 10px 5px 10px rgba(0, 0, 0, 0.15);
-  border-left: 1px solid rgba(0, 0, 0, 0.27);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.27);
-  border-top: 1px solid rgba(0, 0, 0, 0.6);
+  i {
+    font-size: 1.5em;
+  }
 }
 
 .equal {
   grid-row: span 2;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border: none;
-  width: 80px;
-  height: 215%;
-  background: #009de0;
-  color: white;
-  border-radius: 10px;
-  box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15), inset 0 -8px 8px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(0, 0, 0, 0.75), 10px 20px 25px rgba(0, 0, 0, 0.4);
-  position: relative;
-  user-select: none;
+  height: 215% !important;
+  @include button-base($color-equal-bg, $box-shadow-default, $color-equal-before-bg);
 
   i {
-    font-weight: bold;
-    position: relative;
-    text-transform: uppercase;
-    font-style: normal;
     font-size: 1.5em;
   }
-}
-
-.equal::before {
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 4px;
-  right: 12px;
-  bottom: 14px;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #1479c9, rgba(255, 255, 255, 0.36));
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1), 10px 5px 10px rgba(0, 0, 0, 0.15);
-  border-left: 1px solid rgba(0, 0, 0, 0.27);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.27);
-  border-top: 1px solid rgba(0, 0, 0, 0.6);
-}
-
-.equal:active {
-  filter: brightness(1.7);
-  color: lightskyblue;
 }
 
 .erase {
-  background: red;
-  grid-row: span 2;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border: none;
-  width: 80px;
-  height: 80px;
-  color: white;
-  border-radius: 10px;
-  box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15), inset 0 -8px 8px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(0, 0, 0, 0.75), 10px 20px 25px rgba(0, 0, 0, 0.4);
-  position: relative;
-  user-select: none;
+  @include button-base($color-erase-bg, $box-shadow-default, $color-erase-before-bg);
 
   i {
-    font-weight: bold;
-    position: relative;
-    text-transform: uppercase;
-    font-style: normal;
     font-size: 1.5em;
   }
-}
-
-.erase::before {
-  background: linear-gradient(90deg, #d20000, rgba(255, 255, 255, 0.36));
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 4px;
-  right: 12px;
-  bottom: 14px;
-  border-radius: 10px;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1), 10px 5px 10px rgba(0, 0, 0, 0.15);
-  border-left: 1px solid rgba(255, 255, 255, 0.27);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.27);
-  border-top: 1px solid rgba(255, 255, 255, 0.27);
-}
-
-.erase:active {
-  filter: brightness(1.7);
 }
